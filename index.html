@@ -1,0 +1,653 @@
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Braciavia | Pizzeria Contemporanea Gourmet</title>
+    <meta
+      name="description"
+      content="Braciavia è una pizzeria contemporanea gourmet: impasti a lunga maturazione, ingredienti selezionati, pairing ricercati e un’atmosfera urbana premium."
+    />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%231f1f1f'/%3E%3Cpath d='M18 20h28v4H18zm4 8h20c0 8-5.4 16-10 16S22 36 22 28Z' fill='%23f4efe8'/%3E%3C/svg%3E" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="page-accent accent-top"></div>
+    <div class="page-accent accent-bottom"></div>
+
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="brand" href="#top" aria-label="Braciavia home">
+          <span class="brand-mark">B</span>
+          <span class="brand-copy">
+            <strong>Braciavia</strong>
+            <span>Pizzeria contemporanea gourmet</span>
+          </span>
+        </a>
+
+        <nav class="desktop-nav" aria-label="Menu principale">
+          <a href="#about">Chi siamo</a>
+          <a href="#idea">La nostra idea</a>
+          <a href="#specialita">Specialità</a>
+          <a href="#menu">Menù</a>
+          <a href="#gallery">Ambiente</a>
+          <a href="#reviews">Recensioni</a>
+        </nav>
+
+        <div class="header-actions">
+          <button class="btn btn-primary header-book" type="button" data-open-booking="true">Prenota un tavolo</button>
+          <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobileNav" aria-label="Apri menu">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+
+      <nav class="mobile-nav" id="mobileNav" aria-label="Menu mobile">
+        <a href="#about">Chi siamo</a>
+        <a href="#idea">La nostra idea</a>
+        <a href="#specialita">Specialità</a>
+        <a href="#menu">Menù</a>
+        <a href="#gallery">Ambiente</a>
+        <a href="#reviews">Recensioni</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero section-dark" id="top">
+        <div class="hero-media">
+          <img
+            src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=1800&q=80"
+            alt="Pizza gourmet contemporanea servita in ambiente elegante"
+          />
+          <div class="hero-overlay"></div>
+        </div>
+
+        <div class="section-inner hero-layout">
+          <div class="hero-copy reveal">
+            <span class="eyebrow">Impasti contemporanei • Ingredienti selezionati • Forno ad alta temperatura</span>
+            <h1>La pizza che nasce dall’artigianalità e parla un linguaggio gastronomico nuovo.</h1>
+            <p>
+              Braciavia è una pizzeria gourmet urbana: impasti maturati a lungo, topping stagionali,
+              cotture precise e una sala dal ritmo caldo, contemporaneo e profondamente conviviale.
+            </p>
+            <div class="hero-actions">
+              <a class="btn btn-secondary" href="#menu">Scopri il menù</a>
+              <button class="btn btn-primary" type="button" data-open-booking="true">Prenota ora</button>
+            </div>
+          </div>
+
+          <aside class="hero-note reveal delay-1">
+            <small>Tonight selection</small>
+            <strong>Crudo di Parma, fiordilatte, fichi arrosto e riduzione balsamica</strong>
+            <p>Equilibrio tra dolcezza, struttura e spinta sapida, con impasto leggero e profumato.</p>
+          </aside>
+        </div>
+      </section>
+
+      <section class="section section-light" id="about">
+        <div class="about-grid">
+          <figure class="about-media reveal">
+            <img
+              src="https://images.unsplash.com/photo-1514326640560-7d063ef2aed5?auto=format&fit=crop&w=1400&q=80"
+              alt="Pizzaio lo al lavoro con impasto artigianale e ingredienti selezionati"
+            />
+          </figure>
+          <div class="about-copy reveal delay-1">
+            <span class="eyebrow accent">Chi siamo</span>
+            <h2>Una pizzeria gourmet costruita sull’equilibrio tra ricerca, gesto artigianale e piacere immediato.</h2>
+            <p>
+              Lavoriamo su maturazioni lunghe, farine selezionate e topping pensati come composizioni essenziali,
+              in cui ogni ingrediente ha funzione, intensità e spazio.
+            </p>
+            <p>
+              Il risultato è una pizza contemporanea: leggera, leggibile, ricca di carattere e servita in un ambiente
+              che unisce calore, design e un’idea chiara di ospitalità urbana.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-dark idea-section" id="idea">
+        <div class="section-inner idea-layout">
+          <div class="section-heading reveal">
+            <span class="eyebrow">La nostra idea di pizza</span>
+            <h2>Materie prime, tempo e precisione: il nostro gusto nasce da qui.</h2>
+          </div>
+
+          <div class="idea-points">
+            <article class="idea-card reveal">
+              <span class="idea-dot"></span>
+              <strong>Lunga lievitazione</strong>
+              <p>Fino a 72 ore per ottenere un impasto profondo, leggero e altamente digeribile.</p>
+            </article>
+            <article class="idea-card reveal delay-1">
+              <span class="idea-dot"></span>
+              <strong>Farine selezionate</strong>
+              <p>Blend studiati per struttura, fragranza e una cottura pulita, costante e raffinata.</p>
+            </article>
+            <article class="idea-card reveal delay-2">
+              <span class="idea-dot"></span>
+              <strong>Topping stagionali</strong>
+              <p>Combinazioni costruite attorno a ingredienti vivi, riconoscibili e mai ornamentali.</p>
+            </article>
+            <article class="idea-card reveal delay-3">
+              <span class="idea-dot"></span>
+              <strong>Abbinamenti creativi</strong>
+              <p>Pizza e pairing pensati per dare ritmo al tavolo tra cocktail, birre artigianali e vini naturali.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-light" id="specialita">
+        <div class="section-inner">
+          <div class="section-heading reveal">
+            <span class="eyebrow accent">Specialità</span>
+            <h2>Quattro modi diversi di raccontare la nostra identità.</h2>
+          </div>
+
+          <div class="special-grid">
+            <article class="special-card reveal">
+              <div class="special-media">
+                <img
+                  src="https://images.unsplash.com/photo-1541745537411-b8046dc6d66c?auto=format&fit=crop&w=1200&q=80"
+                  alt="Pizza signature gourmet"
+                />
+              </div>
+              <div class="special-copy">
+                <h3>Pizze signature</h3>
+                <p>Ricette distintive, impatto visivo pulito e una costruzione del gusto pensata per sorprendere senza eccessi.</p>
+              </div>
+            </article>
+
+            <article class="special-card reveal delay-1">
+              <div class="special-media">
+                <img
+                  src="https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?auto=format&fit=crop&w=1200&q=80"
+                  alt="Degustazione gourmet in pizzeria contemporanea"
+                />
+              </div>
+              <div class="special-copy">
+                <h3>Degustazione gourmet</h3>
+                <p>Percorsi che alternano assaggi, impasti differenti e topping stagionali per un’esperienza più ampia del menù.</p>
+              </div>
+            </article>
+
+            <article class="special-card reveal delay-2">
+              <div class="special-media">
+                <img
+                  src="https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?auto=format&fit=crop&w=1200&q=80"
+                  alt="Fritti artigianali premium"
+                />
+              </div>
+              <div class="special-copy">
+                <h3>Fritti artigianali</h3>
+                <p>Croccanti, asciutti e tecnicamente puliti: piccoli piatti che aprono il tavolo con carattere e misura.</p>
+              </div>
+            </article>
+
+            <article class="special-card reveal delay-3">
+              <div class="special-media">
+                <img
+                  src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=1200&q=80"
+                  alt="Cocktail e pairing con pizza gourmet"
+                />
+              </div>
+              <div class="special-copy">
+                <h3>Cocktail e pairing</h3>
+                <p>Birre artigianali, vini naturali e miscelazione contemporanea per accompagnare ogni pizza con il ritmo giusto.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-accent stats-section">
+        <div class="stats-grid">
+          <article class="stat-card reveal">
+            <strong>72h</strong>
+            <span>maturazione impasti</span>
+          </article>
+          <article class="stat-card reveal delay-1">
+            <strong>15</strong>
+            <span>pizze signature</span>
+          </article>
+          <article class="stat-card reveal delay-2">
+            <strong>Piccoli produttori</strong>
+            <span>ingredienti scelti in filiera corta</span>
+          </article>
+          <article class="stat-card reveal delay-3">
+            <strong>100%</strong>
+            <span>impasto artigianale</span>
+          </article>
+        </div>
+      </section>
+
+      <section class="section section-light menu-section" id="menu">
+        <div class="section-inner menu-layout">
+          <div class="section-heading reveal">
+            <span class="eyebrow accent">Menù in evidenza</span>
+            <h2>Una selezione breve, precisa e costruita per raccontare il carattere della casa.</h2>
+          </div>
+
+          <div class="menu-columns">
+            <article class="menu-panel reveal">
+              <h3>Classici contemporanei</h3>
+              <div class="menu-item">
+                <div>
+                  <strong>Margherita Braciavia</strong>
+                  <p>Pomodoro San Marzano, fiordilatte, basilico fresco, olio al pomodoro arrosto</p>
+                </div>
+                <span>12€</span>
+              </div>
+              <div class="menu-item">
+                <div>
+                  <strong>Diavola affumicata</strong>
+                  <p>Spianata piccante, provola, pomodoro vivo, origano selvatico</p>
+                </div>
+                <span>14€</span>
+              </div>
+            </article>
+
+            <article class="menu-panel reveal delay-1">
+              <h3>Signature</h3>
+              <div class="menu-item">
+                <div>
+                  <strong>Carbonara croccante</strong>
+                  <p>Crema d’uovo, pecorino, guanciale croccante, pepe nero macinato al momento</p>
+                </div>
+                <span>17€</span>
+              </div>
+              <div class="menu-item">
+                <div>
+                  <strong>Norma bruciata</strong>
+                  <p>Melanzana laccata, ricotta montata, pomodoro concentrato, basilico e lime</p>
+                </div>
+                <span>16€</span>
+              </div>
+            </article>
+
+            <article class="menu-panel reveal delay-2">
+              <h3>Stagionali</h3>
+              <div class="menu-item">
+                <div>
+                  <strong>Bosco e taleggio</strong>
+                  <p>Funghi arrosto, taleggio, nocciole tostate, maggiorana e fondo vegetale</p>
+                </div>
+                <span>18€</span>
+              </div>
+              <div class="menu-item">
+                <div>
+                  <strong>Crudo e fichi</strong>
+                  <p>Fiordilatte, crudo 24 mesi, fichi arrosto, riduzione balsamica, pepe lungo</p>
+                </div>
+                <span>19€</span>
+              </div>
+            </article>
+          </div>
+
+          <div class="menu-cta reveal delay-1">
+            <button class="btn btn-primary" type="button" data-open-menu="true">Vedi il menù completo</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-dark gallery-section" id="gallery">
+        <div class="gallery-editorial">
+          <figure class="gallery-shot gallery-a reveal">
+            <img
+              src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=1600&q=80"
+              alt="Dettaglio cinematografico di pizza al forno"
+            />
+          </figure>
+          <figure class="gallery-shot gallery-b reveal delay-1">
+            <img
+              src="https://images.unsplash.com/photo-1514326640560-7d063ef2aed5?auto=format&fit=crop&w=1400&q=80"
+              alt="Impasto artigianale steso a mano"
+            />
+          </figure>
+          <figure class="gallery-shot gallery-c reveal delay-2">
+            <img
+              src="https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=1800&q=80"
+              alt="Interno di locale contemporaneo e accogliente"
+            />
+          </figure>
+          <figure class="gallery-shot gallery-d reveal delay-1">
+            <img
+              src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=1400&q=80"
+              alt="Cocktail pairing in ristorante gourmet"
+            />
+          </figure>
+          <figure class="gallery-shot gallery-e reveal delay-3">
+            <img
+              src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1400&q=80"
+              alt="Ingredienti freschi e plating gastronomico"
+            />
+          </figure>
+          <figure class="gallery-shot gallery-f reveal delay-2">
+            <img
+              src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1400&q=80"
+              alt="Dettaglio gourmet di forno, pizza e servizio in sala"
+            />
+          </figure>
+        </div>
+      </section>
+
+      <section class="section section-light reasons-section">
+        <div class="section-inner">
+          <div class="section-heading reveal">
+            <span class="eyebrow accent">Perché sceglierci</span>
+            <h2>Una pizzeria che tiene insieme tecnica, gusto e atmosfera senza perdere immediatezza.</h2>
+          </div>
+
+          <div class="reasons-grid">
+            <article class="reason-card reveal">
+              <h3>Impasto leggero e digeribile</h3>
+              <p>Maturazioni lunghe e cotture calibrate per un morso fragrante, asciutto e armonico.</p>
+            </article>
+            <article class="reason-card reveal delay-1">
+              <h3>Ricerca gastronomica</h3>
+              <p>Accostamenti pensati con precisione, stagionalità e una chiara gerarchia dei sapori.</p>
+            </article>
+            <article class="reason-card reveal delay-2">
+              <h3>Atmosfera contemporanea</h3>
+              <p>Design caldo, servizio presente e un’identità visiva che accompagna l’esperienza al tavolo.</p>
+            </article>
+            <article class="reason-card reveal delay-3">
+              <h3>Qualità artigianale</h3>
+              <p>Ogni dettaglio, dal forno ai topping, riflette una pratica quotidiana precisa e coerente.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-light reviews-section" id="reviews">
+        <div class="section-inner">
+          <div class="section-heading reveal">
+            <span class="eyebrow accent">Testimonianze</span>
+            <h2>Recensioni che raccontano leggerezza, personalità e una serata vissuta con gusto.</h2>
+          </div>
+
+          <div class="reviews-track">
+            <article class="review-card reveal">
+              <p>“Impasto notevole, topping molto puliti e pairing sorprendenti. Una pizzeria con identità forte e sala bellissima.”</p>
+              <strong>Giulia R.</strong>
+            </article>
+            <article class="review-card reveal delay-1">
+              <p>“Atmosfera contemporanea ma accogliente. La degustazione è costruita benissimo e il servizio ha ottimo ritmo.”</p>
+              <strong>Marco e Silvia</strong>
+            </article>
+            <article class="review-card reveal delay-2">
+              <p>“Si sente il lavoro su impasti e ingredienti. Un progetto gourmet vero, ma senza rigidità.”</p>
+              <strong>Lorenzo T.</strong>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-dark booking-section" id="booking">
+        <div class="section-inner booking-layout reveal">
+          <div class="booking-copy">
+            <span class="eyebrow">Prenotazione</span>
+            <h2>Lascia che la serata inizi con una pizza pensata bene, servita nel momento giusto.</h2>
+            <p>
+              Prenota il tuo tavolo e scopri una pizzeria contemporanea dove tecnica, atmosfera e gusto si incontrano con naturalezza.
+            </p>
+          </div>
+          <form class="booking-form booking-inline-form" novalidate>
+            <div class="form-grid">
+              <div>
+                <label for="inlineBookingName">Nome e cognome</label>
+                <input id="inlineBookingName" name="name" type="text" required />
+              </div>
+              <div>
+                <label for="inlineBookingPhone">Telefono</label>
+                <input id="inlineBookingPhone" name="phone" type="tel" required />
+              </div>
+              <div>
+                <label for="inlineBookingDate">Data</label>
+                <input id="inlineBookingDate" name="date" type="date" required />
+              </div>
+              <div>
+                <label for="inlineBookingTime">Orario</label>
+                <select id="inlineBookingTime" name="time" required>
+                  <option value="">Seleziona</option>
+                  <option>19:00</option>
+                  <option>19:30</option>
+                  <option>20:00</option>
+                  <option>20:30</option>
+                  <option>21:00</option>
+                  <option>21:30</option>
+                  <option>22:00</option>
+                </select>
+              </div>
+            </div>
+            <div>
+              <label for="inlineBookingGuests">Numero persone</label>
+              <select id="inlineBookingGuests" name="guests" required>
+                <option value="">Seleziona</option>
+                <option>2 persone</option>
+                <option>3 persone</option>
+                <option>4 persone</option>
+                <option>5 persone</option>
+                <option>6+ persone</option>
+              </select>
+            </div>
+            <label class="consent-check">
+              <input name="privacy-inline" type="checkbox" required />
+              <span>Acconsento al trattamento dei dati personali per la gestione della prenotazione.</span>
+            </label>
+            <button class="btn btn-primary" type="submit">Invia richiesta</button>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="section-inner footer-grid">
+        <div class="footer-brand">
+          <strong>Braciavia</strong>
+          <span>Pizzeria contemporanea gourmet</span>
+          <span class="footer-copy">© 2026 Braciavia</span>
+        </div>
+        <div class="footer-contact">
+          <span>Via della Brace 24, Milano</span>
+          <span>+39 02 12345678</span>
+          <span>prenotazioni@braciavia.it</span>
+        </div>
+        <div class="footer-meta">
+          <span>Mar - Dom · 19:00 - 23:45</span>
+          <div class="footer-links">
+            <a href="privacy.html">Privacy Policy</a>
+            <a href="cookie.html">Cookie Policy</a>
+          </div>
+          <div class="footer-socials" aria-label="Social">
+            <a href="https://instagram.com/braciavia" target="_blank" rel="noreferrer" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm0 2.2A2.8 2.8 0 0 0 4.2 7v10A2.8 2.8 0 0 0 7 19.8h10a2.8 2.8 0 0 0 2.8-2.8V7A2.8 2.8 0 0 0 17 4.2H7Zm10.35 1.65a.9.9 0 1 1 0 1.8.9.9 0 0 1 0-1.8ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 2.2A2.8 2.8 0 1 0 12 14.8 2.8 2.8 0 0 0 12 9.2Z"/>
+              </svg>
+            </a>
+            <a href="https://facebook.com/braciavia" target="_blank" rel="noreferrer" aria-label="Facebook">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M13.5 22v-8.1h2.73l.41-3.16H13.5V8.71c0-.92.26-1.54 1.58-1.54h1.69V4.34a22.2 22.2 0 0 0-2.47-.13c-2.45 0-4.13 1.49-4.13 4.24v2.28H7.4v3.16h2.77V22h3.33Z"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <div class="modal" id="menuModal" aria-hidden="true">
+      <div class="modal-backdrop" data-close-menu="true"></div>
+      <div class="modal-dialog modal-dialog-wide" role="dialog" aria-modal="true" aria-labelledby="menuModalTitle">
+        <button class="modal-close" type="button" aria-label="Chiudi" data-close-menu="true">×</button>
+        <span class="eyebrow accent">Menù completo</span>
+        <h2 id="menuModalTitle">Una selezione Braciavia tra classici contemporanei, signature e proposte stagionali.</h2>
+        <p class="modal-copy">
+          Un menù demo pensato per raccontare il carattere della pizzeria: impasti leggeri, ingredienti selezionati,
+          topping essenziali e pairing costruiti con equilibrio.
+        </p>
+
+        <div class="modal-menu-grid">
+          <article class="modal-menu-panel">
+            <h3>Classici contemporanei</h3>
+            <div class="menu-item">
+              <div>
+                <strong>Margherita al pomodoro arrosto</strong>
+                <p>San Marzano, fiordilatte, basilico fresco, olio al pomodoro arrostito</p>
+              </div>
+              <span>12€</span>
+            </div>
+            <div class="menu-item">
+              <div>
+                <strong>Diavola affumicata</strong>
+                <p>Spianata piccante, provola, origano selvatico, pomodoro vivo</p>
+              </div>
+              <span>14€</span>
+            </div>
+            <div class="menu-item">
+              <div>
+                <strong>Bufala e alici del Cantabrico</strong>
+                <p>Pomodoro giallo, bufala, alici, zest di limone, basilico</p>
+              </div>
+              <span>16€</span>
+            </div>
+          </article>
+
+          <article class="modal-menu-panel">
+            <h3>Signature</h3>
+            <div class="menu-item">
+              <div>
+                <strong>Carbonara croccante</strong>
+                <p>Crema d’uovo, pecorino, guanciale croccante, pepe nero</p>
+              </div>
+              <span>17€</span>
+            </div>
+            <div class="menu-item">
+              <div>
+                <strong>Crudo e fichi</strong>
+                <p>Fiordilatte, crudo 24 mesi, fichi arrosto, riduzione balsamica</p>
+              </div>
+              <span>19€</span>
+            </div>
+            <div class="menu-item">
+              <div>
+                <strong>Norma bruciata</strong>
+                <p>Melanzana laccata, ricotta montata, pomodoro concentrato, basilico e lime</p>
+              </div>
+              <span>16€</span>
+            </div>
+          </article>
+
+          <article class="modal-menu-panel">
+            <h3>Stagionali e pairing</h3>
+            <div class="menu-item">
+              <div>
+                <strong>Bosco e taleggio</strong>
+                <p>Funghi arrosto, taleggio, nocciole tostate, maggiorana</p>
+              </div>
+              <span>18€</span>
+            </div>
+            <div class="menu-item">
+              <div>
+                <strong>Fritto leggero di apertura</strong>
+                <p>Crocchetta di patate affumicate, mayo alle erbe, limone</p>
+              </div>
+              <span>8€</span>
+            </div>
+            <div class="menu-item">
+              <div>
+                <strong>Pairing serale</strong>
+                <p>Calice naturale, birra artigianale o cocktail dedicato</p>
+              </div>
+              <span>da 7€</span>
+            </div>
+          </article>
+        </div>
+
+        <div class="menu-modal-actions">
+          <button class="btn btn-primary" type="button" data-open-booking="true">Prenota un tavolo</button>
+          <button class="btn btn-secondary btn-secondary-dark" type="button" data-close-menu="true">Chiudi</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal" id="bookingModal" aria-hidden="true">
+      <div class="modal-backdrop" data-close-booking="true"></div>
+      <div class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="bookingModalTitle">
+        <button class="modal-close" type="button" aria-label="Chiudi" data-close-booking="true">×</button>
+        <span class="eyebrow">Prenotazione</span>
+        <h2 id="bookingModalTitle">Prenota il tuo tavolo da Braciavia</h2>
+        <p class="modal-copy">
+          Lascia i tuoi dati e seleziona giorno e orario preferiti. Ti ricontatteremo per confermare la disponibilità.
+        </p>
+
+        <form class="booking-form" id="bookingForm" novalidate>
+          <div class="form-grid">
+            <div>
+              <label for="bookingName">Nome e cognome</label>
+              <input id="bookingName" name="name" type="text" required />
+            </div>
+            <div>
+              <label for="bookingEmail">Email</label>
+              <input id="bookingEmail" name="email" type="email" required />
+            </div>
+            <div>
+              <label for="bookingDate">Data</label>
+              <input id="bookingDate" name="date" type="date" required />
+            </div>
+            <div>
+              <label for="bookingTime">Orario</label>
+              <select id="bookingTime" name="time" required>
+                <option value="">Seleziona</option>
+                <option>19:00</option>
+                <option>19:30</option>
+                <option>20:00</option>
+                <option>20:30</option>
+                <option>21:00</option>
+                <option>21:30</option>
+                <option>22:00</option>
+              </select>
+            </div>
+            <div>
+              <label for="bookingGuests">Numero persone</label>
+              <select id="bookingGuests" name="guests" required>
+                <option value="">Seleziona</option>
+                <option>2 persone</option>
+                <option>3 persone</option>
+                <option>4 persone</option>
+                <option>5 persone</option>
+                <option>6+ persone</option>
+              </select>
+            </div>
+            <div>
+              <label for="bookingPhone">Telefono</label>
+              <input id="bookingPhone" name="phone" type="tel" required />
+            </div>
+          </div>
+
+          <div>
+            <label for="bookingMessage">Note</label>
+            <textarea id="bookingMessage" name="message" placeholder="Allergie, esigenze particolari, preferenze tavolo"></textarea>
+          </div>
+
+          <label class="consent-check">
+            <input id="bookingPrivacy" name="privacy" type="checkbox" required />
+            <span>Acconsento al trattamento dei dati personali per la gestione della prenotazione.</span>
+          </label>
+
+          <button class="btn btn-primary" type="submit">Invia richiesta</button>
+          <p class="form-status" id="bookingStatus" aria-live="polite"></p>
+        </form>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
