@@ -21,7 +21,15 @@ const chatStatus = document.querySelector('#braciaviaChatStatus');
 const chatPanel = document.querySelector('#braciavia-chat');
 const chatLauncher = document.querySelector('#braciaviaChatLauncher');
 const chatCloseButton = document.querySelector('#braciaviaChatClose');
-const chatWebhookUrl = 'https://n8n.bot-bros.it/webhook/braciavia-chat';
+const chatWebhookUrlRaw = 'https://n8n.bot-bros.it/webhook/braciavia-chat';
+const chatWebhookUrl = (() => {
+  const sanitized = (chatWebhookUrlRaw || '').trim().replace(/^['"]|['"]$/g, '');
+  try {
+    return new URL(sanitized).toString();
+  } catch (_error) {
+    return 'https://n8n.bot-bros.it/webhook/braciavia-chat';
+  }
+})();
 const chatSessionStorageKey = 'braciavia_chat_session_v1';
 
 const closeMobileMenu = () => {
