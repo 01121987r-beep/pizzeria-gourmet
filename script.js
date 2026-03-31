@@ -349,7 +349,7 @@ if (chatForm && chatInput) {
     }
 
     try {
-      const response = await fetch(`${chatWebhookUrl}?action=sendMessage`, {
+      const response = await fetch(chatWebhookUrl, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -362,7 +362,8 @@ if (chatForm && chatInput) {
       });
 
       if (!response.ok) {
-        throw new Error(`HTTP ${response.status}`);
+        const errorText = await response.text();
+        throw new Error(`HTTP ${response.status}${errorText ? `: ${errorText.slice(0, 180)}` : ''}`);
       }
 
       const reply = await extractChatReply(response);
@@ -374,7 +375,7 @@ if (chatForm && chatInput) {
       chatStatus.textContent = '';
     } catch (error) {
       appendChatMessage('In questo momento non riesco a rispondere. Se vuoi, prova tra poco oppure contatta il ristorante al +39 02 12345678.', 'bot');
-      chatStatus.textContent = 'Connessione al chatbot non riuscita.';
+      chatStatus.textContent = `Connessione al chatbot non riuscita (${error.message || 'errore sconosciuto'}).`;
     } finally {
       chatInput.disabled = false;
       if (chatSendButton) {
