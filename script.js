@@ -13,6 +13,16 @@ const menuClosers = document.querySelectorAll('[data-close-menu="true"]');
 const bookingDateInput = document.querySelector('#bookingDate');
 const inlineBookingDateInput = document.querySelector('#inlineBookingDate');
 const cookieConsentKey = 'braciavia_cookie_consent_v1';
+const chatForm = document.querySelector('#braciaviaChatForm');
+const chatInput = document.querySelector('#braciaviaChatInput');
+const chatMessages = document.querySelector('#braciaviaChatMessages');
+const chatSendButton = document.querySelector('#braciaviaChatSend');
+const chatStatus = document.querySelector('#braciaviaChatStatus');
+const chatPanel = document.querySelector('#braciavia-chat');
+const chatLauncher = document.querySelector('#braciaviaChatLauncher');
+const chatCloseButton = document.querySelector('#braciaviaChatClose');
+const chatWebhookUrl = 'https://n8n.bot-bros.it/webhook/braciavia-chat';
+const chatSessionStorageKey = 'braciavia_chat_session_v1';
 
 const closeMobileMenu = () => {
   if (!header || !menuToggle) {
@@ -223,3 +233,177 @@ if (bookingForm && bookingStatus) {
 
 createCookieBanner();
 createWhatsAppFloat();
+
+const openChatPanel = () => {
+  if (!chatPanel || !chatLauncher) {
+    return;
+  }
+
+  chatPanel.classList.remove('is-hidden');
+  chatPanel.setAttribute('aria-hidden', 'false');
+  chatLauncher.setAttribute('aria-expanded', 'true');
+  chatLauncher.hidden = true;
+  chatInput?.focus();
+};
+
+const closeChatPanel = () => {
+  if (!chatPanel || !chatLauncher) {
+    return;
+  }
+
+  chatPanel.classList.add('is-hidden');
+  chatPanel.setAttribute('aria-hidden', 'true');
+  chatLauncher.hidden = false;
+  chatLauncher.setAttribute('aria-expanded', 'false');
+};
+
+window.braciaviaCloseChat = closeChatPanel;
+
+chatLauncher?.addEventListener('click', openChatPanel);
+chatCloseButton?.addEventListener('click', closeChatPanel);
+
+const appendChatMessage = (text, sender) => {
+  if (!chatMessages || !text) {
+    return;
+  }
+
+  const message = document.createElement('div');
+  message.className = `braciavia-chat__message braciavia-chat__message--${sender}`;
+  message.textContent = text;
+  chatMessages.appendChild(message);
+  chatMessages.scrollTop = chatMessages.scrollHeight;
+};
+
+const getChatSessionId = () => {
+  const existingSessionId = sessionStorage.getItem(chatSessionStorageKey);
+  if (existingSessionId) {
+    return existingSessionId;
+  }
+
+  const sessionId = `braciavia-${Date.now()}-${Math.random().toString(36).slice(2, 10)}`;
+  sessionStorage.setItem(chatSessionStorageKey, sessionId);
+  return sessionId;
+};
+
+const extractChatReply = async (response) => {
+  const contentType = response.headers.get('content-type') || '';
+
+  if (contentType.includes('application/json')) {
+    const data = await response.json();
+
+    if (typeof data?.reply === 'string') {
+      return data.reply;
+    }
+
+    if (typeof data?.output === 'string') {
+      return data.output;
+    }
+
+    if (Array.isArray(data) && typeof data[0]?.output === 'string') {
+      return data[0].output;
+    }
+
+    if (typeof data?.message === 'string') {
+      return data.message;
+    }
+
+    return JSON.stringify(data);
+  }
+
+  const text = await response.text();
+
+  if (!text) {
+    return '';
+  }
+
+  try {
+    const data = JSON.parse(text);
+
+    if (typeof data?.reply === 'string') {
+      return data.reply;
+    }
+
+    if (typeof data?.output === 'string') {
+      return data.output;
+    }
+  } catch (_error) {
+    return text;
+  }
+
+  return text;
+};
+
+if (chatForm && chatInput) {
+  const sendChatMessage = async () => {
+    const message = chatInput.value.trim();
+    if (!message) {
+      return;
+    }
+
+    chatStatus.textContent = 'Invio in corso...';
+    appendChatMessage(message, 'user');
+    chatInput.value = '';
+    chatInput.disabled = true;
+    if (chatSendButton) {
+      chatSendButton.disabled = true;
+    }
+
+    try {
+      const response = await fetch(`${chatWebhookUrl}?action=sendMessage`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json'
+        },
+        body: JSON.stringify({
+          message,
+          sessionId: getChatSessionId()
+        })
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP ${response.status}`);
+      }
+
+      const reply = await extractChatReply(response);
+      if (!reply) {
+        throw new Error('Empty reply');
+      }
+
+      appendChatMessage(reply, 'bot');
+      chatStatus.textContent = '';
+    } catch (error) {
+      appendChatMessage('In questo momento non riesco a rispondere. Se vuoi, prova tra poco oppure contatta il ristorante al +39 02 12345678.', 'bot');
+      chatStatus.textContent = 'Connessione al chatbot non riuscita.';
+    } finally {
+      chatInput.disabled = false;
+      if (chatSendButton) {
+        chatSendButton.disabled = false;
+      }
+      chatInput.focus();
+    }
+  };
+
+  chatForm.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    await sendChatMessage();
+  });
+
+  window.braciaviaSendChat = sendChatMessage;
+
+  if (chatSendButton) {
+    chatSendButton.addEventListener('click', async (event) => {
+      event.preventDefault();
+      await sendChatMessage();
+    });
+  }
+
+  chatInput.addEventListener('keydown', async (event) => {
+    if (event.key !== 'Enter') {
+      return;
+    }
+
+    event.preventDefault();
+    await sendChatMessage();
+  });
+}

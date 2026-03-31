@@ -15,7 +15,7 @@
       href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="styles.css?v=chat2" />
   </head>
   <body>
     <div class="page-accent accent-top"></div>
@@ -483,6 +483,39 @@
       </div>
     </footer>
 
+    <button class="braciavia-chat-launcher" id="braciaviaChatLauncher" type="button" aria-controls="braciavia-chat" aria-expanded="false" aria-label="Apri chat Braciavia">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M12 3C6.48 3 2 6.94 2 11.8c0 2.6 1.31 4.94 3.39 6.56L4.4 21l3.4-1.64c1.24.39 2.66.6 4.2.6 5.52 0 10-3.94 10-8.8S17.52 3 12 3Zm0 14.96c-1.36 0-2.63-.2-3.77-.59l-.42-.14-2 .96.59-1.67-.32-.28C4.22 14.64 3 13.3 3 11.8 3 7.5 7.03 4 12 4s9 3.5 9 7.8-4.03 7.16-9 7.16Zm-4.5-7.46h9v1h-9Zm0-2.5h9v1h-9Zm0 5h6v1h-6Z"/>
+      </svg>
+    </button>
+
+    <section class="braciavia-chat is-hidden" id="braciavia-chat" aria-label="Chat Braciavia" aria-hidden="true">
+      <div class="braciavia-chat__header">
+        <div class="braciavia-chat__header-copy">
+          <strong>Braciavia</strong>
+          <span>Assistenza prenotazioni e info</span>
+        </div>
+        <button class="braciavia-chat__close" id="braciaviaChatClose" type="button" aria-label="Minimizza chat" onclick="window.braciaviaCloseChat && window.braciaviaCloseChat(); return false;">−</button>
+      </div>
+      <div class="braciavia-chat__messages" id="braciaviaChatMessages">
+        <div class="braciavia-chat__message braciavia-chat__message--bot">Ciao e benvenuto da Braciavia.</div>
+        <div class="braciavia-chat__message braciavia-chat__message--bot">Posso aiutarti con menu, orari, contatti e prenotazioni.</div>
+      </div>
+      <form class="braciavia-chat__composer" id="braciaviaChatForm" action="javascript:void(0);">
+        <input
+          class="braciavia-chat__input"
+          id="braciaviaChatInput"
+          type="text"
+          name="message"
+          placeholder="Scrivi qui la tua richiesta..."
+          autocomplete="off"
+          required
+        />
+        <button class="braciavia-chat__send" id="braciaviaChatSend" type="button" aria-label="Invia messaggio" onclick="window.braciaviaSendChat && window.braciaviaSendChat(); return false;">Invia</button>
+      </form>
+      <div class="braciavia-chat__status" id="braciaviaChatStatus" aria-live="polite"></div>
+    </section>
+
     <div class="modal" id="menuModal" aria-hidden="true">
       <div class="modal-backdrop" data-close-menu="true"></div>
       <div class="modal-dialog modal-dialog-wide" role="dialog" aria-modal="true" aria-labelledby="menuModalTitle">
@@ -648,6 +681,6 @@
       </div>
     </div>
 
-    <script src="script.js"></script>
+    <script src="script.js?v=chat2"></script>
   </body>
 </html>
