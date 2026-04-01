@@ -21,8 +21,9 @@ const chatStatus = document.querySelector('#braciaviaChatStatus');
 const chatPanel = document.querySelector('#braciavia-chat');
 const chatLauncher = document.querySelector('#braciaviaChatLauncher');
 const chatCloseButton = document.querySelector('#braciaviaChatClose');
-const chatWebhookUrl = 'https://n8n.bot-bros.it/webhook/braciavia-chat';
+const chatWebhookUrl = 'https://n8n.bot-bros.it/webhook/braciavia-chat-v2';
 const chatSessionStorageKey = 'braciavia_chat_session_v1';
+let chatSessionIdMemory = '';
 
 const closeMobileMenu = () => {
   if (!header || !menuToggle) {
@@ -275,13 +276,25 @@ const appendChatMessage = (text, sender) => {
 };
 
 const getChatSessionId = () => {
-  const existingSessionId = sessionStorage.getItem(chatSessionStorageKey);
-  if (existingSessionId) {
-    return existingSessionId;
+  try {
+    const existingSessionId = sessionStorage.getItem(chatSessionStorageKey);
+    if (existingSessionId) {
+      return existingSessionId;
+    }
+  } catch (_error) {
+    if (chatSessionIdMemory) {
+      return chatSessionIdMemory;
+    }
   }
 
   const sessionId = `braciavia-${Date.now()}-${Math.random().toString(36).slice(2, 10)}`;
-  sessionStorage.setItem(chatSessionStorageKey, sessionId);
+
+  try {
+    sessionStorage.setItem(chatSessionStorageKey, sessionId);
+  } catch (_error) {
+    chatSessionIdMemory = sessionId;
+  }
+
   return sessionId;
 };
 
