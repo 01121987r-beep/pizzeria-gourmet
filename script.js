@@ -298,12 +298,14 @@ const getChatSessionId = () => {
   return sessionId;
 };
 
-const extractChatReply = async (response) => {
-  const contentType = response.headers.get('content-type') || '';
+const extractChatReply = (rawText, contentType = '') => {
+  if (!rawText) {
+    return '';
+  }
 
   if (contentType.includes('application/json')) {
-    const data = await response.json();
-
+    try {
+      const data = JSON.parse(rawText);
     if (typeof data?.reply === 'string') {
       return data.reply;
     }
@@ -321,16 +323,13 @@ const extractChatReply = async (response) => {
     }
 
     return JSON.stringify(data);
-  }
-
-  const text = await response.text();
-
-  if (!text) {
-    return '';
+    } catch (_error) {
+      return rawText;
+    }
   }
 
   try {
-    const data = JSON.parse(text);
+    const data = JSON.parse(rawText);
 
     if (typeof data?.reply === 'string') {
       return data.reply;
@@ -340,50 +339,34 @@ const extractChatReply = async (response) => {
       return data.output;
     }
   } catch (_error) {
-    return text;
+    return rawText;
   }
 
-  return text;
+  return rawText;
 };
 
 const postChatMessage = async (payload) => {
-  try {
-    return await fetch(chatWebhookUrl, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Accept: 'application/json'
-      },
-      body: JSON.stringify(payload)
-    });
-  } catch (fetchError) {
-    return new Promise((resolve, reject) => {
-      const request = new XMLHttpRequest();
-      request.open('POST', chatWebhookUrl, true);
-      request.setRequestHeader('Content-Type', 'application/json');
-      request.setRequestHeader('Accept', 'application/json');
+  return new Promise((resolve, reject) => {
+    const request = new XMLHttpRequest();
+    request.open('POST', chatWebhookUrl, true);
+    request.setRequestHeader('Content-Type', 'application/json');
+    request.setRequestHeader('Accept', 'application/json');
 
-      request.onload = () => {
-        const headers = new Headers({
-          'content-type': request.getResponseHeader('Content-Type') || 'text/plain'
-        });
+    request.onload = () => {
+      resolve({
+        ok: request.status >= 200 && request.status < 300,
+        status: request.status || 0,
+        text: request.responseText || '',
+        contentType: request.getResponseHeader('Content-Type') || ''
+      });
+    };
 
-        resolve(
-          new Response(request.responseText || '', {
-            status: request.status || 200,
-            statusText: request.statusText || 'OK',
-            headers
-          })
-        );
-      };
+    request.onerror = () => {
+      reject(new Error('Errore di rete verso il webhook'));
+    };
 
-      request.onerror = () => {
-        reject(fetchError);
-      };
-
-      request.send(JSON.stringify(payload));
-    });
-  }
+    request.send(JSON.stringify(payload));
+  });
 };
 
 if (chatForm && chatInput) {
@@ -408,11 +391,11 @@ if (chatForm && chatInput) {
       });
 
       if (!response.ok) {
-        const errorText = await response.text();
+        const errorText = response.text;
         throw new Error(`HTTP ${response.status}${errorText ? `: ${errorText.slice(0, 180)}` : ''}`);
       }
 
-      const reply = await extractChatReply(response);
+      const reply = extractChatReply(response.text, response.contentType);
       if (!reply) {
         throw new Error('Empty reply');
       }
